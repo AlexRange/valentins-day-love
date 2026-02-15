@@ -1,21 +1,20 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion"
 
 const container: Variants = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.3 },
+    transition: { staggerChildren: 0.25 },
   },
-};
+}
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 30, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8 },
+    transition: { duration: 0.7, ease: "easeOut" },
   },
-};
+}
 
 const paragraphs = [
   "Mi amor,",
@@ -39,33 +38,31 @@ const paragraphs = [
   "Te amo más de lo que las palabras pueden explicar… y prometo seguir amándote cada día más.",
 
   "Con todo mi amor ❤️",
-];
+]
 
 const Letter = () => {
   return (
-    <section className="relative py-40 overflow-hidden bg-gradient-to-b from-pink-300 via-pink-200 to-pink-300 px-6">
+    <section className="relative py-32 md:py-40 overflow-hidden bg-gradient-to-b from-pink-300 via-pink-200 to-pink-300 px-6">
 
-      {/* glow suave */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.25),transparent_60%)]" />
+      {/* glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.2),transparent_60%)]" />
 
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.4 }}
-        className="relative max-w-4xl mx-auto text-center text-white"
+        viewport={{ once: true, margin: "-80px" }}
+        className="relative max-w-3xl mx-auto text-center text-white"
       >
 
-        {/* TÍTULO */}
         <motion.h2
           variants={item}
-          className="text-4xl md:text-5xl font-bold mb-16 drop-shadow-lg"
+          className="text-3xl md:text-5xl font-bold mb-12 drop-shadow-lg"
         >
           Para el amor de mi vida 💌
         </motion.h2>
 
-        {/* CARTA */}
-        <div className="space-y-6 text-lg md:text-xl leading-relaxed">
+        <div className="space-y-6 text-base md:text-xl leading-relaxed">
 
           {paragraphs.map((text, i) => (
             <motion.p key={i} variants={item}>
@@ -78,7 +75,7 @@ const Letter = () => {
       </motion.div>
 
     </section>
-  );
-};
+  )
+}
 
-export default Letter;
+export default Letter
